@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UserController, type: :request do
-  let!(:user)  { create(:user) }
+  let!(:auth_user)  { create(:user) }
   let(:object) { JSON.parse(response.body)}
-  let(:credentials) { user.create_new_auth_token }
+  let(:credentials) { auth_user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
 
   describe 'GET /api/v1/user' do
@@ -11,7 +11,7 @@ RSpec.describe Api::V1::UserController, type: :request do
       it 'Should return one user' do
         language = Language.new(name: 'French', native: true, learn: false)
         location = Location.new(locale: 'Jamaica')
-        create(:user)
+        user = create(:user)
         user.location = location
         user.languages << language
         user.save
@@ -24,17 +24,21 @@ RSpec.describe Api::V1::UserController, type: :request do
 
     describe 'multiple Users' do
       context 'create two users' do
+        # let(:user1) { create(:user) }
+        # let(:user2) { create(:user) }
+        # let(:user2) { create(:user) }
+
         before do
            2.times do
-            create(:user)
-            binding.pry
-            language = Language.new(name: 'Dutch', native: false, learn: true)
-            location = Location.new(locale: 'London')
+            user = create(:user)
+            user.languages.create(name: 'Dutch', native: false, learn: true)
+            location = Location.new(locale: 'France')
             user.location = location
-            user.languages << language
             user.save
           end
         end
+        let(:users) { User.all }
+
 
         it 'Should return all users' do
           get '/api/v1/user', headers: headers
