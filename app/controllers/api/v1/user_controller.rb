@@ -10,4 +10,8 @@ class Api::V1::UserController < ApiController
     @user = User.find_by(id: params[:id])
     render json: @user
   end
+
+  def update
+    binding.pry
+  end
 end
