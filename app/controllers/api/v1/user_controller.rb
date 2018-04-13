@@ -12,7 +12,9 @@ class Api::V1::UserController < ApiController
   end
 
   def create
-    binding.pry
+    profile_params.each do |key|
+      current_api_v1_user
+    end
   end
 
   private

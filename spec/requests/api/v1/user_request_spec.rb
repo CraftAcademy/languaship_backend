@@ -46,6 +46,7 @@ RSpec.describe Api::V1::UserController, type: :request do
 
     describe 'updates user' do
       let!(:user) {create(:user)}
+      #
       let(:object) {JSON.parse(response.body)}
       let(:credentials) {user.create_new_auth_token}
       let(:headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentials)}
@@ -53,9 +54,10 @@ RSpec.describe Api::V1::UserController, type: :request do
       it 'POST /api/v1/user' do
         post "/api/v1/user", params: {
             user_profile: {
-                name: 'Aiden'
+                name: 'Aiden',
                 age: 38,
                 gender: 'Male',
+                #learn and native are not string attributes of user
                 learn: "Swedish",
                 native: "English",
                 location: 'Gothenburg'
@@ -67,7 +69,7 @@ RSpec.describe Api::V1::UserController, type: :request do
         # nativeLanguage = Language.find_by(name: 'English', learn: false, native: true)
         userNative = user.languages.each {|lan| lan.native == true}
         userlearn = user.languages.each {|lan| lan.learn == true}
-
+        expect(user_profile).to be true
         expect(user.age).to eq 38
         expect(user.gender).to eq 'Male'
         expect(user.name).to eq 'Aiden'
