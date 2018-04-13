@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UserController, type: :request do
-  let!(:user)  { create(:user) }
-  let(:object) { JSON.parse(response.body)}
-  let(:credentials) { user.create_new_auth_token }
-  let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
+  let!(:user) {create(:user)}
+  let(:object) {JSON.parse(response.body)}
+  let(:credentials) {user.create_new_auth_token}
+  let(:headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentials)}
 
   describe 'GET /api/v1/user' do
     describe 'oneUser' do
@@ -34,7 +34,7 @@ RSpec.describe Api::V1::UserController, type: :request do
           end
         end
 
-        let(:users) { User.all }
+        let(:users) {User.all}
 
         it 'Should return all users' do
           get '/api/v1/user', headers: headers
@@ -45,35 +45,37 @@ RSpec.describe Api::V1::UserController, type: :request do
     end
 
     describe 'updates user' do
-      let!(:user)  { create(:user) }
-      let(:object) { JSON.parse(response.body)}
-      let(:credentials) { user.create_new_auth_token }
-      let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
+      let!(:user) {create(:user)}
+      let(:object) {JSON.parse(response.body)}
+      let(:credentials) {user.create_new_auth_token}
+      let(:headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentials)}
 
-      it 'POST /api/v1/user', params: {
-          user_profile: {
-              data: {
-                  age: 38,
-                  gender: 'Male',
-                  learnLanguage: "Swedish",
-                  nativeLanguage: "English",
-                  location: 'Gothenburg'
-              }
-          }
-      },headers: headers
+      it 'POST /api/v1/user/id' do
+        post "/api/v1/user/#{user.id}", params: {
+            user_profile: {
+                data: {
+                    age: 38,
+                    gender: 'Male',
+                    learnLanguage: "Swedish",
+                    nativeLanguage: "English",
+                    location: 'Gothenburg'
+                }
+            }
+        }, headers: headers
 
-      location = Location.find_by_locale('Gothenburg')
-      # learnLanguage = Language.find_by(name: 'Swedish', learn: true, native: false)
-      # nativeLanguage = Language.find_by(name: 'English', learn: false, native: true)
-      userNative = user.languages.each { |lan| lan.native == true }
-      userlearn = user.languages.each { |lan| lan.learn == true }
+        location = Location.find_by_locale('Gothenburg')
+        # learnLanguage = Language.find_by(name: 'Swedish', learn: true, native: false)
+        # nativeLanguage = Language.find_by(name: 'English', learn: false, native: true)
+        userNative = user.languages.each {|lan| lan.native == true}
+        userlearn = user.languages.each {|lan| lan.learn == true}
 
-      expect(user.age).to eq 38
-      expect(user.gender).to eq'Male'
-      expect(userNative.name).to eq 'English'
-      expect(userlearn.name).to eq 'Swedish'
-      expect(user.location).to eq location
-      expect(user.age).to eq 38
+        expect(user.age).to eq 38
+        expect(user.gender).to eq 'Male'
+        expect(userNative.name).to eq 'English'
+        expect(userlearn.name).to eq 'Swedish'
+        expect(user.location).to eq location
+        expect(user.age).to eq 38
+      end
     end
   end
 end
