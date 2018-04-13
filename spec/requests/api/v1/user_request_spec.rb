@@ -50,16 +50,15 @@ RSpec.describe Api::V1::UserController, type: :request do
       let(:credentials) {user.create_new_auth_token}
       let(:headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentials)}
 
-      it 'POST /api/v1/user/id' do
-        post "/api/v1/user/#{user.id}", params: {
+      it 'POST /api/v1/user' do
+        post "/api/v1/user", params: {
             user_profile: {
-                data: {
-                    age: 38,
-                    gender: 'Male',
-                    learnLanguage: "Swedish",
-                    nativeLanguage: "English",
-                    location: 'Gothenburg'
-                }
+                name: 'Aiden'
+                age: 38,
+                gender: 'Male',
+                learn: "Swedish",
+                native: "English",
+                location: 'Gothenburg'
             }
         }, headers: headers
 
@@ -71,6 +70,7 @@ RSpec.describe Api::V1::UserController, type: :request do
 
         expect(user.age).to eq 38
         expect(user.gender).to eq 'Male'
+        expect(user.name).to eq 'Aiden'
         expect(userNative.name).to eq 'English'
         expect(userlearn.name).to eq 'Swedish'
         expect(user.location).to eq location

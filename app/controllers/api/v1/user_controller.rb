@@ -11,7 +11,13 @@ class Api::V1::UserController < ApiController
     render json: @user
   end
 
-  def update
+  def create
     binding.pry
+  end
+
+  private
+
+  def profile_params
+    params.require(:user_profile).permit!
   end
 end
