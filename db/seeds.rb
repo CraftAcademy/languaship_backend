@@ -13,8 +13,14 @@
   User.destroy_all
 
 #Languages
-native_languages = [["Swedish", false, true], ["French", false, true], ["Dutch", false, true]]
-learn_languages = [["French", true, false], ["Dutch", true, false], ["Swedish", true, false]]
+native_languages = [["SWEDISH", true, false], ["FRENCH", true, false],
+                    ["ITALIAN", true, false], ["GERMAN", true, false],
+                    ["ENGLISH", true, false], ["SPANISH", true, false],
+                    ["FINNISH", true, false]]
+learn_languages = [["SWEDISH", false, true], ["FRENCH", false, true],
+                    ["ITALIAN", false, true], ["GERMAN", false, true],
+                    ["ENGLISH", false, true], ["SPANISH", false, true],
+                    ["FINNISH", false, true]]
 
 #Locations
 locations = ["Springfield", "Paris", "Amsterdam"]
