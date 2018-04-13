@@ -43,5 +43,37 @@ RSpec.describe Api::V1::UserController, type: :request do
         end
       end
     end
+
+    describe 'updates user' do
+      let!(:user)  { create(:user) }
+      let(:object) { JSON.parse(response.body)}
+      let(:credentials) { user.create_new_auth_token }
+      let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
+
+      it 'POST /api/v1/user', params: {
+          user_profile: {
+              data: {
+                  age: 38,
+                  gender: 'Male',
+                  learnLanguage: "Swedish",
+                  nativeLanguage: "English",
+                  location: 'Gothenburg'
+              }
+          }
+      },headers: headers
+
+      location = Location.find_by_locale('Gothenburg')
+      # learnLanguage = Language.find_by(name: 'Swedish', learn: true, native: false)
+      # nativeLanguage = Language.find_by(name: 'English', learn: false, native: true)
+      userNative = user.languages.each { |lan| lan.native == true }
+      userlearn = user.languages.each { |lan| lan.learn == true }
+
+      expect(user.age).to eq 38
+      expect(user.gender).to eq'Male'
+      expect(userNative.name).to eq 'English'
+      expect(userlearn.name).to eq 'Swedish'
+      expect(user.location).to eq location
+      expect(user.age).to eq 38
+    end
   end
 end
