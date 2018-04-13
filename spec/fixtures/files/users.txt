@@ -1,34 +1,24 @@
-binding.pry
 {
   "data" => [
     { "id" => "#{users.first.id}",
       "type" => "users",
       "attributes" => {
-        "languages" => [
-          {
-            "name" => "#{users.first.languages[0].name}",
-            "learn" => false,
-            "native" => true
-          }
-        ],
-        "location" => {
-          "locale" => "#{users.first.location.locale}"
-        },
+        "languages" => [],
+        "location" => nil,
         "name" => "#{users.first.name}",
         "email" => "#{users.first.email}",
         "age" => users.first.age,
         "gender" => "#{users.first.gender}"
       }
     },
-
     { "id" => "#{users.second.id}",
       "type" => "users",
       "attributes" => {
         "languages" => [
           {
             "name" => "#{users.second.languages[0].name}",
-            "learn" => false,
-            "native" => true
+            "learn" => true,
+            "native" => false
           }
         ],
         "location" => {
@@ -40,15 +30,14 @@ binding.pry
         "gender" => "#{users.second.gender}"
       }
     },
-
     { "id" => "#{users.third.id}",
       "type" => "users",
       "attributes" => {
         "languages" => [
           {
             "name" => "#{users.third.languages[0].name}",
-            "learn" => false,
-            "native" => true
+            "learn" => true,
+            "native" => false
           }
         ],
         "location" => {

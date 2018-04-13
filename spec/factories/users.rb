@@ -7,8 +7,5 @@ FactoryBot.define do
 
     sequence(:name) { |n| "user#{n}" }
     sequence(:email) { |n| "email#{n}@email.com" }
-
-    # association :location, factory :location
-    # association :languages, factory :language
   end
 end
