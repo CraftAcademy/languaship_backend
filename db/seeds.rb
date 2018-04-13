@@ -11,11 +11,11 @@ user.save
 [["Swedish", false, true ], ["French", false, true], ["Dutch", true, false]]
 
 #Locations
-["Sweden", "France", "Holland"]
+["Springfield", "Paris", "Amsterdam"]
 
 #User
 ["Homer Simpson", "Marge Simpson", "Philip J. Fry"]
-["Homer@simpson.com", "Peter@griffen.com", "Philip@fry.com"]
+["Homer@simpson.com", "Marge@simpson.com", "Philip@fry.com"]
 [39, 36, 25]
 ["Male", "Female", "Male"]
 [https://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2016/02/simp2006_homerarmscrossed_f_hires2_-_h_2016.jpg,
