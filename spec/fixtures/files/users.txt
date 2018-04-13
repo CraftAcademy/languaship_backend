@@ -1,24 +1,53 @@
-{"data" => [{
-   "id" => "#{user.id}",
-   "type"=> "users",
-   "attributes" => {
-     "languages" => [],
-     "name" => "#{user.name}",
-     "email" => "email6@email.com"
-}},
 {
-   "id" => "#{user.id+1}",
-   "type"=> "users",
-   "attributes" => {
-     "languages" => [],
-     "name" => "user8",
-     "email" => "email7@email.com"
-}},
-{
-   "id" => "#{user.id+2}",
-   "type"=> "users",
-   "attributes" => {
-     "languages" => [],
-     "name" => "user9",
-     "email" => "email8@email.com"
-}}]}
+  "data" => [
+    { "id" => "#{users.first.id}",
+      "type" => "users",
+      "attributes" => {
+        "languages" => [],
+        "location" => nil,
+        "name" => "#{users.first.name}",
+        "email" => "#{users.first.email}",
+        "age" => users.first.age,
+        "gender" => "#{users.first.gender}"
+      }
+    },
+    { "id" => "#{users.second.id}",
+      "type" => "users",
+      "attributes" => {
+        "languages" => [
+          {
+            "name" => "#{users.second.languages[0].name}",
+            "learn" => true,
+            "native" => false
+          }
+        ],
+        "location" => {
+          "locale" => "#{users.second.location.locale}"
+        },
+        "name" => "#{users.second.name}",
+        "email" => "#{users.second.email}",
+        "age" => users.second.age,
+        "gender" => "#{users.second.gender}"
+      }
+    },
+    { "id" => "#{users.third.id}",
+      "type" => "users",
+      "attributes" => {
+        "languages" => [
+          {
+            "name" => "#{users.third.languages[0].name}",
+            "learn" => true,
+            "native" => false
+          }
+        ],
+        "location" => {
+          "locale" => "#{users.third.location.locale}"
+        },
+        "name" => "#{users.third.name}",
+        "email" => "#{users.third.email}",
+        "age" => users.third.age,
+        "gender" => "#{users.third.gender}"
+      }
+    }
+  ]
+}

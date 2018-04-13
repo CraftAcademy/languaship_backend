@@ -1,8 +1,22 @@
-{"data" => {
-   "id" => "#{user.id}",
-   "type"=> "users",
-   "attributes" => {
-     "languages" => [],
-     "name" => "#{user.name}",
-     "email" => "#{user.email}"
-}}}
+{
+  "data" => {
+      "id" => "#{user.id}",
+      "type" => "users",
+      "attributes" => {
+        "languages" => [
+          {
+            "name" => "#{user.languages[0].name}",
+            "learn" => false,
+            "native" => true
+          }
+        ],
+        "location" => {
+          "locale" => "#{user.location.locale}"
+        },
+        "name" => "#{user.name}",
+        "email" => "#{user.email}",
+        "age" => user.age,
+        "gender" => "#{user.gender}"
+      }
+    }
+}
