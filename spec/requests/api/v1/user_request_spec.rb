@@ -11,7 +11,7 @@ RSpec.describe Api::V1::UserController, type: :request do
       it 'Should return one user' do
         language = Language.new(name: 'French', native: true, learn: false)
         location = Location.new(locale: 'Jamaica')
-        create(:user)
+        user = create(:user)
         user.location = location
         user.languages << language
         user.save
@@ -25,16 +25,16 @@ RSpec.describe Api::V1::UserController, type: :request do
     describe 'multiple Users' do
       context 'create two users' do
         before do
-           2.times do
-            create(:user)
-            binding.pry
-            language = Language.new(name: 'Dutch', native: false, learn: true)
-            location = Location.new(locale: 'London')
+          2.times do
+            user = create(:user)
+            user.languages.create(name: 'Dutch', native: false, learn: true)
+            location = Location.new(locale: 'France')
             user.location = location
-            user.languages << language
             user.save
           end
         end
+
+        let(:users) { User.all }
 
         it 'Should return all users' do
           get '/api/v1/user', headers: headers

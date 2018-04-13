@@ -1,62 +1,52 @@
 {
   "data" => [
-    { "id" => "#{user.id}",
+    { "id" => "#{users.first.id}",
       "type" => "users",
       "attributes" => {
-        "languages" => [
-          {
-            "name" => "#{user.languages[0].name}",
-            "learn" => false,
-            "native" => true
-          }
-        ],
-        "location" => {
-          "locale" => "#{user.location.locale}"
-        },
-        "name" => "#{user.name}",
-        "email" => "#{user.email}",
-        "age" => user.age,
-        "gender" => "#{user.gender}"
+        "languages" => [],
+        "location" => nil,
+        "name" => "#{users.first.name}",
+        "email" => "#{users.first.email}",
+        "age" => users.first.age,
+        "gender" => "#{users.first.gender}"
       }
     },
-
-    { "id" => "#{user.id}",
+    { "id" => "#{users.second.id}",
       "type" => "users",
       "attributes" => {
         "languages" => [
           {
-            "name" => "#{user.languages[0].name}",
-            "learn" => false,
-            "native" => true
+            "name" => "#{users.second.languages[0].name}",
+            "learn" => true,
+            "native" => false
           }
         ],
         "location" => {
-          "locale" => "#{user.location.locale}"
+          "locale" => "#{users.second.location.locale}"
         },
-        "name" => "#{user.name}",
-        "email" => "#{user.email}",
-        "age" => user.age,
-        "gender" => "#{user.gender}"
+        "name" => "#{users.second.name}",
+        "email" => "#{users.second.email}",
+        "age" => users.second.age,
+        "gender" => "#{users.second.gender}"
       }
     },
-
-    { "id" => "#{user.id}",
+    { "id" => "#{users.third.id}",
       "type" => "users",
       "attributes" => {
         "languages" => [
           {
-            "name" => "#{user.languages[0].name}",
-            "learn" => false,
-            "native" => true
+            "name" => "#{users.third.languages[0].name}",
+            "learn" => true,
+            "native" => false
           }
         ],
         "location" => {
-          "locale" => "#{user.location.locale}"
+          "locale" => "#{users.third.location.locale}"
         },
-        "name" => "#{user.name}",
-        "email" => "#{user.email}",
-        "age" => user.age,
-        "gender" => "#{user.gender}"
+        "name" => "#{users.third.name}",
+        "email" => "#{users.third.email}",
+        "age" => users.third.age,
+        "gender" => "#{users.third.gender}"
       }
     }
   ]
