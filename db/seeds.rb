@@ -7,9 +7,10 @@
 # user.languages << language
 # user.save
 #
-Location.destroy_all
-Language.destroy_all
-User.destroy_all
+
+  Location.destroy_all
+  Language.destroy_all
+  User.destroy_all
 
 #Languages
 native_languages = [["Swedish", false, true], ["French", false, true], ["Dutch", false, true]]
