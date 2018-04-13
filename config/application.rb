@@ -20,7 +20,7 @@ module LanguashipBackend
         origins '*'
         resource '*',
           headers: :any,
-          methods: %w(:get, :post, :put, :delete),
+          methods: %i[get post put delete options],
           expose: %w(access-token expiry token-type uid client),
           max_age: 0
       end
