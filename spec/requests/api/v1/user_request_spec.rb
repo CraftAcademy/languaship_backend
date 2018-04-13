@@ -29,7 +29,6 @@ RSpec.describe Api::V1::UserController, type: :request do
             user = create(:user, image: "http://cdn2.ubergizmo.com/wp-content/uploads/2016/02/homer-simpson.jpeg")
             user.languages.create(name: 'Dutch', native: false, learn: true)
             location = create(:location, locale: 'France', user: user)
-            # user.location = location
             user.save
           end
         end
