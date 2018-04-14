@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :languages, :location, :name, :email, :age, :gender
+  attributes :id, :languages, :location, :name, :email, :age, :gender, :image
 
   def languages
     object.languages.map do |lan|
