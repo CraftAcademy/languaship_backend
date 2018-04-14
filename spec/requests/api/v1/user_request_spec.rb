@@ -26,10 +26,9 @@ RSpec.describe Api::V1::UserController, type: :request do
       context 'create two users' do
         before do
           2.times do
-            user = create(:user)
+            user = create(:user, image: "http://cdn2.ubergizmo.com/wp-content/uploads/2016/02/homer-simpson.jpeg")
             user.languages.create(name: 'Dutch', native: false, learn: true)
-            location = Location.new(locale: 'France')
-            user.location = location
+            location = create(:location, locale: 'France', user: user)
             user.save
           end
         end

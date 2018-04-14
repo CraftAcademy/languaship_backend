@@ -22,7 +22,9 @@ RSpec.describe 'Sessions', type: :request do
           'image' => nil,
           'gender' => 'Male',
           'age' => 14,
-          'type' => 'user'
+          'type' => 'user',
+          'image' => "#{user.image}"
+
         }
       }
 

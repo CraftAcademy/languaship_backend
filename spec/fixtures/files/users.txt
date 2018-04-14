@@ -8,7 +8,8 @@
         "name" => "#{users.first.name}",
         "email" => "#{users.first.email}",
         "age" => users.first.age,
-        "gender" => "#{users.first.gender}"
+        "gender" => "#{users.first.gender}",
+        "image" => "#{users.first.image}"
       }
     },
     { "id" => "#{users.second.id}",
@@ -27,7 +28,8 @@
         "name" => "#{users.second.name}",
         "email" => "#{users.second.email}",
         "age" => users.second.age,
-        "gender" => "#{users.second.gender}"
+        "gender" => "#{users.second.gender}",
+        "image" => "#{users.second.image}"
       }
     },
     { "id" => "#{users.third.id}",
@@ -46,7 +48,8 @@
         "name" => "#{users.third.name}",
         "email" => "#{users.third.email}",
         "age" => users.third.age,
-        "gender" => "#{users.third.gender}"
+        "gender" => "#{users.third.gender}",
+        "image" => "#{users.third.image}"
       }
     }
   ]
