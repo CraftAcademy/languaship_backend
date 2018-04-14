@@ -28,7 +28,6 @@ class Api::V1::UserController < ApiController
     else
       render json: {message: 'An unexpected error occurred'}
     end
-
   end
 
   private
