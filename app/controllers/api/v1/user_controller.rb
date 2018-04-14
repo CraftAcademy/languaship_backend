@@ -12,8 +12,9 @@ class Api::V1::UserController < ApiController
   end
 
   def create
-    profile_params.each do |key|
-      current_api_v1_user
+    user = User.create(profile_params)
+    if user.save
+      render 'index'
     end
   end
 
