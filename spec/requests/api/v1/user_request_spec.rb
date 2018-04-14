@@ -46,31 +46,34 @@ RSpec.describe Api::V1::UserController, type: :request do
 
     describe 'updates user' do
       let!(:user) {create(:user)}
-      #
       let(:object) {JSON.parse(response.body)}
       let(:credentials) {user.create_new_auth_token}
       let(:headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentials)}
 
+
+
       it 'POST /api/v1/user' do
+        Language.create(name: 'Swedish', learn: true, native: false)
+        Language.create(name: 'Swedish', learn: false, native: true)
+        Language.create(name: 'English', learn: false, native: true)
+        Language.create(name: 'English', learn: true, native: false)
+
         post "/api/v1/user", params: {
             user_profile: {
                 name: 'Aiden',
                 age: 38,
                 gender: 'Male',
-                #learn and native are not string attributes of user
-                learn: true,
-                native: true,
+                learnLanguage: "Swedish",
+                nativeLanguage: 'English',
                 location: 'Gothenburg'
             }
         }, headers: headers
 
         location = Location.find_by_locale('Gothenburg')
-        # learnLanguage = Language.find_by(name: 'Swedish', learn: true, native: false)
-        # nativeLanguage = Language.find_by(name: 'English', learn: false, native: true)
-        userNative = user.languages.each {|lan| lan.native == true}
-        userlearn = user.languages.each {|lan| lan.learn == true}
+        user = User.last
+        userNative = user.languages.detect {|lan| lan.native == true}
+        userlearn = user.languages.detect {|lan| lan.learn == true}
 
-        expect(user_profile).to be true
         expect(user.age).to eq 38
         expect(user.gender).to eq 'Male'
         expect(user.name).to eq 'Aiden'
