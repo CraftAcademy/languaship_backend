@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :location do
-    locale 'Stockholm'
+    locale 'Gothenburg'
   end
 end
