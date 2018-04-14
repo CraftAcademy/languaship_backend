@@ -58,8 +58,8 @@ RSpec.describe Api::V1::UserController, type: :request do
                 age: 38,
                 gender: 'Male',
                 #learn and native are not string attributes of user
-                learn: "Swedish",
-                native: "English",
+                learn: true,
+                native: true,
                 location: 'Gothenburg'
             }
         }, headers: headers
@@ -74,8 +74,8 @@ RSpec.describe Api::V1::UserController, type: :request do
         expect(user.age).to eq 38
         expect(user.gender).to eq 'Male'
         expect(user.name).to eq 'Aiden'
-        # expect(userNative.name).to eq 'English'
-        # expect(userlearn.name).to eq 'Swedish'
+        expect(userNative.name).to eq 'English'
+        expect(userlearn.name).to eq 'Swedish'
         expect(user.location).to eq location
         expect(user.age).to eq 38
       end
